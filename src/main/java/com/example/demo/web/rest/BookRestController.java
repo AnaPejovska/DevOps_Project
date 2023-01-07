@@ -45,7 +45,7 @@ public class BookRestController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteById(@PathVariable Long id) {
         this.bookService.deleteById(id);
-        if(this.bookService.findById(id).isEmpty()) return ResponseEntity.ok().build();
+        if(this.bookService.findById(id) == null) return ResponseEntity.ok().build();
         return ResponseEntity.badRequest().build();
     }
     @PutMapping("/markAsTaken/{id}")
