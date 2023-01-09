@@ -74,7 +74,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>devops-integration</finalName>
+        <finalName>project-kiii</finalName>
     </build>
 
 </project>
