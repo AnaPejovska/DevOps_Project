@@ -1,0 +1,27 @@
+version: '3'
+services:
+  database:
+    container_name: project_kiii_database
+    image: postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=kiii123
+      - POSTGRES_DB=project_kiii
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5454:5432
+  kiii_poject:
+    depends_on:
+      - database
+    image: project_kiii.jar
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postresql://postgres:5432/project_kiii
+    ports:
+      - "8080:8080"
+volumes:
+  postgres-data:
+    driver: local
